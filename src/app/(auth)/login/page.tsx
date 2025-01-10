@@ -1,17 +1,25 @@
+'use client';
 import { Box, Button, Container, Paper, TextField } from '@mui/material';
 
 export default function page() {
   return (
     <>
-      <h1>Login</h1>
-      <Box component="section" sx={{}}>
+      <Box
+        component="section"
+        sx={{
+          minHeight: '60vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         <Container sx={{ bg: 'red' }}>
           <Paper
             elevation={6}
             sx={{
               py: '30px',
               px: '20px',
-              width: '50%',
+              width: { sm: '100%', md: '75%', lg: '50%' },
               mx: 'auto',
             }}
           >
@@ -48,7 +56,17 @@ export default function page() {
                   ':focus': { borderColor: 'red' },
                 }}
               />
-              <Button variant="contained">Submit</Button>
+              <Button
+                variant="contained"
+                sx={{
+                  px: '20px',
+                  py: '10px',
+                  font: 'bold',
+                  fontSize: '15px',
+                }}
+              >
+                Submit
+              </Button>
             </form>
           </Paper>
         </Container>
