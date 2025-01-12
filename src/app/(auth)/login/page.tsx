@@ -1,15 +1,18 @@
 'use client';
+import { useAppDispatch, useAppSelector } from '@/hooks/store.hook';
 import { login } from '@/store/features/user.slice';
 import { formikLogin } from '@/types/formik.types';
 import { Box, Button, Container, Paper, TextField } from '@mui/material';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
 export default function page() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const passwordRegx = /^[a-zA-Z0-9!@#$%^&*]{6,20}$/;
   const emailRegx = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+
+  const { token } = useAppSelector((store) => store.userReducer);
+
   const validationSchema = Yup.object({
     email: Yup.string()
       .required('* Email is required.')
