@@ -2,15 +2,19 @@
 import { useAppDispatch, useAppSelector } from '@/hooks/store.hook';
 import { login } from '@/store/features/user.slice';
 import { formikLogin } from '@/types/formik.types';
-import { Box, Button, Container, Paper, TextField } from '@mui/material';
+import { Box, Container, Paper, TextField } from '@mui/material';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/navigation';
 import * as Yup from 'yup';
 
 export default function page() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const dispatch = useAppDispatch();
   const passwordRegx = /^[a-zA-Z0-9!@#$%^&*]{6,20}$/;
   const emailRegx = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+  const router = useRouter();
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { token } = useAppSelector((store) => store.userReducer);
 
   const validationSchema = Yup.object({
@@ -29,8 +33,19 @@ export default function page() {
   const { handleBlur, handleChange, handleSubmit, values } = useFormik({
     initialValues,
     validationSchema,
+    //* تعرف انى ممكن بدخلنى فى fullfilled
     onSubmit: (values) => {
-      dispatch(login(values));
+      dispatch(login(values))
+        .then((res) => {
+          if (res.payload.message === 'success') {
+            setTimeout(() => {
+              router.push('/');
+            }, 2000);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   });
   return (
@@ -95,18 +110,19 @@ export default function page() {
                   ':focus': { borderColor: 'red' },
                 }}
               />
-              <Button
+              <button
                 type="submit"
-                variant="contained"
-                sx={{
-                  px: '20px',
-                  py: '10px',
-                  font: 'bold',
-                  fontSize: '15px',
+                style={{
+                  paddingBlock: '10px',
+                  paddingInline: '20px',
+                  borderRadius: '10px',
+                  backgroundColor: '#1976D2',
+                  cursor: 'pointer',
+                  fontSize: '20px',
                 }}
               >
                 Submit
-              </Button>
+              </button>
             </form>
           </Paper>
         </Container>

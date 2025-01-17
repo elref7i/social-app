@@ -7,6 +7,7 @@ import theme from '@/theme';
 import ReduxProvider from '@/components/ReduxProvider/ReduxProvider';
 import Navbar from '@/components/Navbar/Navbar';
 import { Box } from '@mui/material';
+import { Toaster } from 'react-hot-toast';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -36,7 +37,10 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <ReduxProvider>
-              <Box sx={{ minHeight: '60vh', pt: '100px' }}>{children}</Box>
+              <Box sx={{ minHeight: '60vh', pt: '100px' }}>
+                {children}
+                <Toaster />
+              </Box>
             </ReduxProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
