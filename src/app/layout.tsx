@@ -32,12 +32,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Navbar />
-
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <ReduxProvider>
-              <Box sx={{ minHeight: '60vh', pt: '100px' }}>
+              <Navbar />
+
+              <Box sx={{ minHeight: '60vh', pt: '100px', mb: '20px' }}>
                 {children}
                 <Toaster />
               </Box>

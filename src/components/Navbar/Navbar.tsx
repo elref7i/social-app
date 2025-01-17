@@ -14,8 +14,11 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useAppSelector } from '@/hooks/store.hook';
 
 export default function Navbar() {
+  const token = useAppSelector((store) => store.userReducer.token);
+
   const currentPath = usePathname();
   console.log(currentPath);
 
@@ -136,34 +139,41 @@ export default function Navbar() {
               justifyContent: 'center',
             }}
           >
-            <MenuItem>
-              <Link
-                href={'/'}
-                className={`${currentPath === '/' ? 'active' : 'not-active'}`}
-              >
-                Home
-              </Link>
-            </MenuItem>
-            <MenuItem>
-              <Link
-                href={'/login'}
-                className={`${
-                  currentPath === '/login' ? 'active' : 'not-active'
-                }`}
-              >
-                Login
-              </Link>
-            </MenuItem>
-            <MenuItem>
-              <Link
-                href={'/signup'}
-                className={`${
-                  currentPath === '/signup' ? 'active' : 'not-active'
-                }`}
-              >
-                Signup
-              </Link>
-            </MenuItem>
+            {token && (
+              <MenuItem>
+                <Link
+                  href={'/'}
+                  className={`${currentPath === '/' ? 'active' : 'not-active'}`}
+                >
+                  Home
+                </Link>
+              </MenuItem>
+            )}
+
+            {!token && (
+              <>
+                <MenuItem>
+                  <Link
+                    href={'/login'}
+                    className={`${
+                      currentPath === '/login' ? 'active' : 'not-active'
+                    }`}
+                  >
+                    Login
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link
+                    href={'/signup'}
+                    className={`${
+                      currentPath === '/signup' ? 'active' : 'not-active'
+                    }`}
+                  >
+                    Signup
+                  </Link>
+                </MenuItem>
+              </>
+            )}
           </Box>
           <Box />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

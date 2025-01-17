@@ -1,5 +1,5 @@
 'use client';
-import { useAppDispatch, useAppSelector } from '@/hooks/store.hook';
+import { useAppDispatch } from '@/hooks/store.hook';
 import { login } from '@/store/features/user.slice';
 import { formikLogin } from '@/types/formik.types';
 import { Box, Container, Paper, TextField } from '@mui/material';
@@ -7,15 +7,12 @@ import { useFormik } from 'formik';
 import { useRouter } from 'next/navigation';
 import * as Yup from 'yup';
 
-export default function page() {
+export default function Page() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const dispatch = useAppDispatch();
   const passwordRegx = /^[a-zA-Z0-9!@#$%^&*]{6,20}$/;
   const emailRegx = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
   const router = useRouter();
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { token } = useAppSelector((store) => store.userReducer);
 
   const validationSchema = Yup.object({
     email: Yup.string()
