@@ -10,45 +10,49 @@ import Avatar from '@mui/material/Avatar';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
+import { Post } from '@/types/posts.types';
 
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme }) => ({
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-  variants: [
-    {
-      props: ({ expand }) => !expand,
-      style: {
-        transform: 'rotate(0deg)',
-      },
-    },
-    {
-      props: ({ expand }) => !!expand,
-      style: {
-        transform: 'rotate(180deg)',
-      },
-    },
-  ],
-}));
+// interface ExpandMoreProps extends IconButtonProps {
+//   expand: boolean;
+// }
 
-export default function Po() {
-  const [expanded, setExpanded] = React.useState(false);
+// const ExpandMore = styled((props: ExpandMoreProps) => {
+//   const { expand, ...other } = props;
+//   return <IconButton {...other} />;
+// })(({ theme }) => ({
+//   marginLeft: 'auto',
+//   transition: theme.transitions.create('transform', {
+//     duration: theme.transitions.duration.shortest,
+//   }),
+//   variants: [
+//     {
+//       props: ({ expand }) => !expand,
+//       style: {
+//         transform: 'rotate(0deg)',
+//       },
+//     },
+//     {
+//       props: ({ expand }) => !!expand,
+//       style: {
+//         transform: 'rotate(180deg)',
+//       },
+//     },
+//   ],
+// }));
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+export default function PostCard({ dataInfo }: { dataInfo: Post }) {
+  // const [expanded, setExpanded] = React.useState(false);
+
+  // const handleExpandClick = () => {
+  //   setExpanded(!expanded);
+  // };
+  const { image, body, createdAt } = dataInfo;
+  const { photo, name } = dataInfo.user;
+  const { content, post } = dataInfo.comments;
 
   return (
     <Card sx={{ width: '100%', p: '10px' }}>
