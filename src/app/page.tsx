@@ -1,5 +1,4 @@
 'use client';
-import Loading from '@/components/Loading/Loading';
 import PostCard from '@/components/Post/Post';
 import { useAppDispatch, useAppSelector } from '@/hooks/store.hook';
 import { getPosts } from '@/store/features/post.slice';
@@ -20,7 +19,7 @@ export default function Home() {
       <Container>
         <Grid2 container>
           <Grid2 size={3}></Grid2>
-          <Grid2 size={6}>
+          <Grid2 size={6} columnSpacing={20}>
             {posts
               ? posts?.map((post) => (
                   <PostCard dataInfo={post} key={post._id} />
