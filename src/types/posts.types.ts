@@ -39,4 +39,5 @@ export interface PostsResponse {
   posts: null | Post[];
   isLoading: boolean;
   isFetched: boolean;
+  singlePost: null | Post;
 }

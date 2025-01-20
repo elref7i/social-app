@@ -16,16 +16,22 @@ import Image from 'next/image';
 import CommentPost from '../CommentPost/CommentPost';
 import { Box, Button, Divider, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import Link from 'next/link';
 
-export default function PostCard({ dataInfo }: { dataInfo: Post }) {
+export default function PostCard({
+  dataInfo,
+  showAllComments = false,
+}: {
+  dataInfo: Post;
+  showAllComments: boolean;
+}) {
   // const [expanded, setExpanded] = React.useState(false);
 
   // const handleExpandClick = () => {
   //   setExpanded(!expanded);
   // };
-  console.log(dataInfo);
 
-  const { image, body, createdAt } = dataInfo;
+  const { image, body, createdAt, _id } = dataInfo;
   const { photo, name } = dataInfo.user;
   // const { content, post } = dataInfo.comments;
 
@@ -71,44 +77,49 @@ export default function PostCard({ dataInfo }: { dataInfo: Post }) {
           <ShareIcon />
         </IconButton>
       </CardActions>
-      {dataInfo.comments && (
-        <Box component="div" sx={{ py: '15px' }}>
-          <Divider sx={{ mb: '10px' }}>Comments</Divider>
+      <Box component="div" sx={{ py: '15px' }}>
+        <Divider sx={{ mb: '10px' }}>Comments</Divider>
+        {dataInfo.comments.length > 0 && !showAllComments && (
           <CommentPost comments={dataInfo.comments[0]} />
-          <Button
-            sx={{
-              color: '#000a',
-              mb: '5px',
-              ':hover': {
-                bgcolor: 'transparent',
-                color: '#000',
-                transition: 'color .8s',
-              },
-            }}
-          >
-            Show More Commente
-          </Button>
-          <Box component={'div'} sx={{ display: 'flex' }}>
-            <TextField
-              type="text"
-              placeholder="Enter The Comment"
-              minRows={1}
-              sx={{ flex: '1' }}
+        )}
+        {dataInfo.comments.length > 1 &&
+          showAllComments &&
+          dataInfo.comments.map((comment) => (
+            <CommentPost comments={comment} key={comment._id} />
+          ))}
+        <Button
+          sx={{
+            color: '#000a',
+            mb: '5px',
+            ':hover': {
+              bgcolor: 'transparent',
+              color: '#000',
+              transition: 'color .8s',
+            },
+          }}
+        >
+          <Link href={`/post/${_id}`}>Show More Commente</Link>
+        </Button>
+        <Box component={'div'} sx={{ display: 'flex' }}>
+          <TextField
+            type="text"
+            placeholder="Enter The Comment"
+            minRows={1}
+            sx={{ flex: '1' }}
+          />
+          <IconButton aria-label="add to favorites">
+            <SendIcon
+              sx={{
+                width: '35px',
+                height: '35px',
+                p: '4px',
+                bgcolor: '#0001',
+                borderRadius: '50%',
+              }}
             />
-            <IconButton aria-label="add to favorites">
-              <SendIcon
-                sx={{
-                  width: '35px',
-                  height: '35px',
-                  p: '4px',
-                  bgcolor: '#0001',
-                  borderRadius: '50%',
-                }}
-              />
-            </IconButton>
-          </Box>
+          </IconButton>
         </Box>
-      )}
+      </Box>
     </Card>
   );
 }

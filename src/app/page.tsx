@@ -22,7 +22,11 @@ export default function Home() {
           <Grid2 size={6} columnSpacing={20}>
             {posts
               ? posts?.map((post) => (
-                  <PostCard dataInfo={post} key={post._id} />
+                  <PostCard
+                    dataInfo={post}
+                    showAllComments={false}
+                    key={post._id}
+                  />
                 ))
               : ''}
           </Grid2>
