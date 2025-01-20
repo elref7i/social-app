@@ -1,4 +1,4 @@
-import { Box, CardHeader, IconButton, Paper, Typography } from '@mui/material';
+import { Box, IconButton, Paper, Typography } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Comment } from '@/types/posts.types';
 import userPlaceHolder from '../../assets/imgs/user.png';
