@@ -23,7 +23,7 @@ export default function PostCard({
   showAllComments = false,
 }: {
   dataInfo: Post;
-  showAllComments: boolean;
+  showAllComments?: boolean;
 }) {
   // const [expanded, setExpanded] = React.useState(false);
 
