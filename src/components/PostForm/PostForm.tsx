@@ -5,14 +5,22 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useRef } from 'react';
 import { useAppSelector } from '@/hooks/store.hook';
 import axios from 'axios';
+
+interface header {
+  token: string;
+}
+interface RequestOptions {
+  url: string; // URL of the request
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'; // HTTP method
+  headers: header;
+  data: any; // Payload data for POST/PUT requests
+}
 export default function PostForm() {
-  const token = useAppSelector((store) => {
+  const { token } = useAppSelector((store) => {
     return store.userReducer;
   });
   const postContentRef = useRef<HTMLInputElement>(null);
   const postFileRef = useRef<HTMLInputElement>(null);
-  console.log(postContentRef);
-  console.log(postFileRef);
 
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -27,15 +35,27 @@ export default function PostForm() {
   });
 
   async function createPost() {
+    const content = postContentRef.current?.value || '';
+    const file = postFileRef.current?.files?.[0];
+
+    const postData = new FormData();
+    postData.append('body', content);
+    if (file) {
+      postData.append('file', file);
+    }
+
     try {
       const options = {
-        url: '',
-        method: 'GET',
+        url: 'https://linked-posts.routemisr.com/posts',
+        method: 'POST',
         headers: {
           token,
         },
+        data: postData,
       };
+
       const { data } = await axios.request(options);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +84,11 @@ export default function PostForm() {
             Upload files
             <VisuallyHiddenInput type="file" ref={postFileRef} />
           </Button>
-          <Button variant="contained" endIcon={<SendIcon />}>
+          <Button
+            onClick={createPost}
+            variant="contained"
+            endIcon={<SendIcon />}
+          >
             Send
           </Button>
         </Box>

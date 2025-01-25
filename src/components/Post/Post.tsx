@@ -98,7 +98,9 @@ export default function PostCard({
             },
           }}
         >
-          <Link href={`/post/${_id}`}>Show More Commente</Link>
+          {dataInfo.comments.length > 1 && !showAllComments && (
+            <Link href={`/post/${_id}`}>Show More Commente</Link>
+          )}
         </Button>
         <Box component={'div'} sx={{ display: 'flex' }}>
           <TextField

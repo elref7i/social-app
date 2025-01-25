@@ -65,7 +65,7 @@ export const PostSlice = createSlice({
       state.isLoading = false;
       state.isFetched = true;
     });
-    builder.addCase(getPosts.rejected, function (state, { payload }) {});
+    builder.addCase(getPosts.rejected, function () {});
     builder.addCase(getSinglePost.fulfilled, function (state, { payload }) {
       console.log('true');
       state.singlePost = payload;
@@ -74,7 +74,7 @@ export const PostSlice = createSlice({
       state.isLoading = false;
       state.isFetched = true;
     });
-    builder.addCase(getSinglePost.rejected, function (state, { payload }) {
+    builder.addCase(getSinglePost.rejected, function () {
       console.log('error');
     });
   },
