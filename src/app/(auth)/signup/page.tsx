@@ -1,7 +1,7 @@
 'use client';
 import { useAppDispatch } from '../../../hooks/store.hook';
 import { signup } from '../../../store/features/user.slice';
-import { formikSignup } from '../../..//types/formik.types';
+import { formikSignup } from '../../../types/formik.types';
 import {
   Box,
   Container,
