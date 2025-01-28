@@ -26,7 +26,6 @@ export default function Page() {
     email: '',
     password: '',
   };
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { handleBlur, handleChange, handleSubmit, values } = useFormik({
     initialValues,
     validationSchema,

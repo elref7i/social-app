@@ -44,25 +44,24 @@ export default function Page() {
     dateOfBirth: '',
     gender: '',
   };
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { handleBlur, handleChange, handleSubmit, values, errors, touched } =
-    useFormik({
-      initialValues,
-      validationSchema,
-      onSubmit: (values) => {
-        dispatch(signup(values))
-          .then((res) => {
-            if (res.payload.message === 'success') {
-              setTimeout(() => {
-                router.push('login');
-              }, 2000);
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      },
-    });
+
+  const { handleBlur, handleChange, handleSubmit, values } = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: (values) => {
+      dispatch(signup(values))
+        .then((res) => {
+          if (res.payload.message === 'success') {
+            setTimeout(() => {
+              router.push('login');
+            }, 2000);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  });
 
   return (
     <>

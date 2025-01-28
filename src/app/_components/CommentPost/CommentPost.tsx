@@ -1,6 +1,5 @@
 import { Box, IconButton, Paper, Typography } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-// import { Comment } from '@/types/posts.types';
 import userPlaceHolder from '../../../assets/imgs/user.png';
 import Image from 'next/image';
 import { Comment } from '../../../../src/types/posts.types';

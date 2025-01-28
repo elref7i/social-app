@@ -25,15 +25,8 @@ export default function PostCard({
   dataInfo: Post;
   showAllComments?: boolean;
 }) {
-  // const [expanded, setExpanded] = React.useState(false);
-
-  // const handleExpandClick = () => {
-  //   setExpanded(!expanded);
-  // };
-
   const { image, body, createdAt, _id } = dataInfo;
   const { photo, name } = dataInfo.user;
-  // const { content, post } = dataInfo.comments;
 
   return (
     <Card sx={{ width: '100%', p: '10px', mb: '20px' }}>
