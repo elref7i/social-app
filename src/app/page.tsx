@@ -1,6 +1,6 @@
 'use client';
-import { useAppDispatch, useAppSelector } from '@/hooks/store.hook';
-import { getPosts } from '@/store/features/post.slice';
+import { useAppDispatch, useAppSelector } from '../hooks/store.hook';
+import { getPosts } from '../store/features/post.slice';
 import { Container, Grid2 } from '@mui/material';
 import { useEffect } from 'react';
 import PostForm from './_components/PostForm/PostForm';

@@ -1,10 +1,9 @@
 'use client';
-import PostCard from '@/app/_components/Post/Post';
-// import PostCard from '@/components/Post/Post';
-import { useAppDispatch, useAppSelector } from '@/hooks/store.hook';
-import { getSinglePost } from '@/store/features/post.slice';
+import { useAppDispatch, useAppSelector } from '../../../hooks/store.hook';
+import { getSinglePost } from '../../../store/features/post.slice';
 import { Box } from '@mui/material';
 import { use, useEffect } from 'react';
+import PostCard from '../../_components/Post/Post';
 
 export default function Page({
   params,

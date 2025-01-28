@@ -3,18 +3,9 @@ import { Box, Button, styled, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useRef } from 'react';
-import { useAppSelector } from '@/hooks/store.hook';
+import { useAppSelector } from '../../../hooks/store.hook';
 import axios from 'axios';
 
-interface header {
-  token: string;
-}
-interface RequestOptions {
-  url: string; // URL of the request
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'; // HTTP method
-  headers: header;
-  data: any; // Payload data for POST/PUT requests
-}
 export default function PostForm() {
   const { token } = useAppSelector((store) => {
     return store.userReducer;

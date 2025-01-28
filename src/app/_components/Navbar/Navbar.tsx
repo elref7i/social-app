@@ -14,8 +14,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useAppSelector } from '@/hooks/store.hook';
 import Loading from '../Loading/Loading';
+import { useAppSelector } from '../../../../src/hooks/store.hook';
 
 export default function Navbar() {
   const token = useAppSelector((store) => store.userReducer.token);

@@ -1,7 +1,7 @@
 'use client';
-import { useAppDispatch } from '@/hooks/store.hook';
-import { login } from '@/store/features/user.slice';
-import { formikLogin } from '@/types/formik.types';
+import { useAppDispatch } from '../../../hooks/store.hook';
+import { login } from '../../../store/features/user.slice';
+import { formikLogin } from '../../../types/formik.types';
 import { Box, Container, Paper, TextField } from '@mui/material';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/navigation';

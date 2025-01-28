@@ -1,5 +1,5 @@
-import { formikSignup } from '@/types/formik.types';
-import { userState } from '@/types/user.types';
+import { formikSignup } from '../../types/formik.types';
+import { userState } from '../../types/user.types';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import toast from 'react-hot-toast';

@@ -11,12 +11,12 @@ import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
-import { Post } from '@/types/posts.types';
 import Image from 'next/image';
 import CommentPost from '../CommentPost/CommentPost';
 import { Box, Button, Divider, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import Link from 'next/link';
+import { Post } from '../../../../src/types/posts.types';
 
 export default function PostCard({
   dataInfo,
