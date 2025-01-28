@@ -1,10 +1,10 @@
 'use client';
-import PostCard from '@/components/Post/Post';
-import PostForm from '@/components/PostForm/PostForm';
 import { useAppDispatch, useAppSelector } from '@/hooks/store.hook';
 import { getPosts } from '@/store/features/post.slice';
 import { Container, Grid2 } from '@mui/material';
 import { useEffect } from 'react';
+import PostForm from './_components/PostForm/PostForm';
+import PostCard from './_components/Post/Post';
 
 export default function Home() {
   const { posts } = useAppSelector((store) => {

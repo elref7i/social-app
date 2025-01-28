@@ -1,5 +1,6 @@
 'use client';
-import PostCard from '@/components/Post/Post';
+import PostCard from '@/app/_components/Post/Post';
+// import PostCard from '@/components/Post/Post';
 import { useAppDispatch, useAppSelector } from '@/hooks/store.hook';
 import { getSinglePost } from '@/store/features/post.slice';
 import { Box } from '@mui/material';

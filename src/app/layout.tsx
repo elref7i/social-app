@@ -4,10 +4,10 @@ import './globals.css';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '@/theme';
-import ReduxProvider from '@/components/ReduxProvider/ReduxProvider';
-import Navbar from '@/components/Navbar/Navbar';
 import { Box } from '@mui/material';
 import { Toaster } from 'react-hot-toast';
+import ReduxProvider from './_components/ReduxProvider/ReduxProvider';
+import Navbar from './_components/Navbar/Navbar';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
