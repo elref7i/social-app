@@ -7,7 +7,7 @@ export const getPosts = createAsyncThunk(
   'posts/getPosts',
   async function (_, { getState }) {
     //!
-    const state: RootState = getState();
+    const state = getState() as RootState;
     const token = state.userReducer.token;
     console.log(token);
 
@@ -30,7 +30,7 @@ export const getSinglePost = createAsyncThunk(
   'posts/getSinglePost',
   async function (id: string, { getState }) {
     //!
-    const state: RootState = getState();
+    const state = getState() as RootState;
     const token = state.userReducer.token;
     console.log(token);
 

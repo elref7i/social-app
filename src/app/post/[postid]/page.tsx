@@ -19,7 +19,7 @@ export default function Page({
 
   useEffect(() => {
     dispatch(getSinglePost(postid));
-  }, []);
+  }, [dispatch, postid]);
   return (
     <>
       <Box

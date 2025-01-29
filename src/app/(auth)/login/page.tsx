@@ -8,7 +8,6 @@ import { useRouter } from 'next/navigation';
 import * as Yup from 'yup';
 
 export default function Page() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const dispatch = useAppDispatch();
   const passwordRegx = /^[a-zA-Z0-9!@#$%^&*]{6,20}$/;
   const emailRegx = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;

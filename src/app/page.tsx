@@ -13,7 +13,7 @@ export default function Home() {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getPosts());
-  }, []);
+  }, [dispatch]);
   //* Grid Contianer
   return (
     <>
