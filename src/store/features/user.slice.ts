@@ -38,7 +38,7 @@ export const signup = createAsyncThunk(
   }
 );
 const initialState: userState = {
-  token: localStorage.getItem('token'),
+  token: typeof window !== 'undefined' ? localStorage.getItem('token') : null,
   isLoading: true,
 };
 
@@ -51,7 +51,9 @@ const userSlice = createSlice({
       toast.success('success');
       state.token = action.payload.token;
       state.isLoading = false;
-      localStorage.setItem('token', action.payload.token);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('token', action.payload.token);
+      }
     });
     builder.addCase(login.rejected, function () {
       toast.error('error');

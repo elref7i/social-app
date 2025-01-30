@@ -14,7 +14,6 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Loading from '../Loading/Loading';
 import { useAppSelector } from '../../../../src/hooks/store.hook';
 
 export default function Navbar() {
@@ -120,9 +119,6 @@ export default function Navbar() {
       </MenuItem>
     </Menu>
   );
-  const { isLoading } = useAppSelector((store) => {
-    return store.PostReducer;
-  });
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" color="primary">
@@ -223,7 +219,7 @@ export default function Navbar() {
             </IconButton>
           </Box>
         </Toolbar>
-        {isLoading && <Loading />}
+        {/* {isLoading && <Loading />} */}
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
